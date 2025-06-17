@@ -1,6 +1,6 @@
 package com.test.security.domain.entity;
 
-import com.test.security.domain.enums.TipoCategoria;
+import com.test.security.domain.enums.CategoryType;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,8 +17,8 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "id")
 @ToString
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "category")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Categoria {
 
     @Enumerated(EnumType.STRING) // Store enum as String in the database
     @Column(nullable = false, length = 10)
-    private TipoCategoria tipo;
+    private CategoryType tipo;
 
     // If you want a bidirectional relationship (Categoria to many Transacoes), you
     // can add:

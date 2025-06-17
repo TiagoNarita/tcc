@@ -1,5 +1,6 @@
 package com.test.security.domain.entity; // Adjust if your base package is different
 
+import com.test.security.domain.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,6 @@ import lombok.ToString;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.test.security.domain.enums.TipoCategoria;
 
 @Getter
 @Setter
@@ -20,8 +20,8 @@ import com.test.security.domain.enums.TipoCategoria;
 @EqualsAndHashCode(of = "id")
 @ToString
 @Entity
-@Table(name = "transacoes")
-public class Transacao {
+@Table(name = "transaction")
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class Transacao {
 
     @Enumerated(EnumType.STRING) // Store enum as String in the database
     @Column(nullable = false, length = 10)
-    private TipoCategoria tipo;
+    private CategoryType tipo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)
@@ -46,6 +46,6 @@ public class Transacao {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", nullable = false) // Categoria is mandatory
-    private Categoria categoria;
+    private Category categoria;
 
 }
