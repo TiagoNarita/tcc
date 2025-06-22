@@ -11,6 +11,7 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -34,7 +35,7 @@ public class Transaction {
     private BigDecimal valor;
 
     @Column(nullable = false)
-    private LocalDate data;
+    private LocalDateTime data;
 
     @Enumerated(EnumType.STRING) // Store enum as String in the database
     @Column(nullable = false, length = 10)
